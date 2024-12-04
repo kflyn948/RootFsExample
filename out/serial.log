@@ -1,0 +1,378 @@
+
+OpenSBI v1.4
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : syscon-reboot
+Platform Shutdown Device  : syscon-poweroff
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 323 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 67 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 35 KB (total), 2 KB (reserved), 9 KB (used), 23 KB (free)
+Firmware Scratch Size     : 4096 B (total), 328 B (used), 3768 B (free)
+Runtime SBI Version       : 2.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000000100000-0x0000000000100fff M: (I,R,W) S/U: (R,W)
+Domain0 Region01          : 0x0000000010000000-0x0000000010000fff M: (I,R,W) S/U: (R,W)
+Domain0 Region02          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region03          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region04          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region05          : 0x000000000c400000-0x000000000c5fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06          : 0x000000000c000000-0x000000000c3fffff M: (I,R,W) S/U: (R,W)
+Domain0 Region07          : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : sstc,zicntr,zihpm,zicboz,zicbom
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 2 bits
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Info       : 16 (0x0007fff8)
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+[    0.000000] Linux version 6.10.0-rc6-00232-g5a4bd506ddad (kevin@KevinsPC0) (riscv64-unknown-linux-gnu-gcc (gc891d8dc23e) 13.2.0, GNU ld (GNU Binutils) 2.42) #1 SMP Tue Jul 16 23:16:56 CST 2024
+[    0.000000] random: crng init done
+[    0.000000] Machine model: riscv-virtio,qemu
+[    0.000000] SBI specification v2.0 detected
+[    0.000000] SBI implementation ID=0x1 Version=0x10004
+[    0.000000] SBI TIME extension detected
+[    0.000000] SBI IPI extension detected
+[    0.000000] SBI RFENCE extension detected
+[    0.000000] SBI SRST extension detected
+[    0.000000] SBI DBCN extension detected
+[    0.000000] efi: UEFI not found.
+[    0.000000] OF: reserved mem: 0x0000000080000000..0x000000008003ffff (256 KiB) nomap non-reusable mmode_resv1@80000000
+[    0.000000] OF: reserved mem: 0x0000000080040000..0x000000008005ffff (128 KiB) nomap non-reusable mmode_resv0@80040000
+[    0.000000] Zone ranges:
+[    0.000000]   DMA32    [mem 0x0000000080000000-0x0000000087ffffff]
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000008005ffff]
+[    0.000000]   node   0: [mem 0x0000000080060000-0x0000000087ffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x0000000087ffffff]
+[    0.000000] SBI HSM extension detected
+[    0.000000] riscv: base ISA extensions acdfhim
+[    0.000000] riscv: ELF capabilities acdfim
+[    0.000000] percpu: Embedded 22 pages/cpu s49592 r8192 d32328 u90112
+[    0.000000] Kernel command line: rdinit=/bin/sh
+[    0.000000] Dentry cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 32768
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 0MB
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x0000000087f65000-0x0000000087fa5000] (0MB)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]       fixmap : 0xff1bfffffea00000 - 0xff1bffffff000000   (6144 kB)
+[    0.000000]       pci io : 0xff1bffffff000000 - 0xff1c000000000000   (  16 MB)
+[    0.000000]      vmemmap : 0xff1c000000000000 - 0xff20000000000000   (1024 TB)
+[    0.000000]      vmalloc : 0xff20000000000000 - 0xff60000000000000   (16384 TB)
+[    0.000000]      modules : 0xffffffff0158c000 - 0xffffffff80000000   (2026 MB)
+[    0.000000]       lowmem : 0xff60000000000000 - 0xff60000008000000   ( 128 MB)
+[    0.000000]       kernel : 0xffffffff80000000 - 0xffffffffffffffff   (2047 MB)
+[    0.000000] Memory: 82788K/131072K available (9846K kernel code, 4971K rwdata, 4096K rodata, 2254K init, 499K bss, 48284K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=1.
+[    0.000000] rcu: 	RCU debug extended QS entry/exit.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] riscv-intc: 64 local interrupts mapped
+[    0.000000] riscv: providing IPIs using SBI IPI extension
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x24e6a1710, max_idle_ns: 440795202120 ns
+[    0.000097] sched_clock: 64 bits at 10MHz, resolution 100ns, wraps every 4398046511100ns
+[    0.000248] riscv-timer: Timer interrupt in S-mode is available via sstc extension
+[    0.008912] Console: colour dummy device 80x25
+[    0.009265] printk: legacy console [tty0] enabled
+[    0.012537] Calibrating delay loop (skipped), value calculated using timer frequency.. 20.00 BogoMIPS (lpj=40000)
+[    0.012763] pid_max: default: 32768 minimum: 301
+[    0.014049] LSM: initializing lsm=capability
+[    0.016583] Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.016652] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.051026] riscv: ELF compat mode supported
+[    0.051281] ASID allocator using 16 bits (65536 entries)
+[    0.052430] rcu: Hierarchical SRCU implementation.
+[    0.052498] rcu: 	Max phase no-delay instances is 1000.
+[    0.056597] EFI services will not be available.
+[    0.058154] smp: Bringing up secondary CPUs ...
+[    0.059669] smp: Brought up 1 node, 1 CPU
+[    0.071403] devtmpfs: initialized
+[    0.081447] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.081674] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.083930] pinctrl core: initialized pinctrl subsystem
+[    0.090729] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.099588] DMA: preallocated 128 KiB GFP_KERNEL pool for atomic allocations
+[    0.100005] DMA: preallocated 128 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.100335] audit: initializing netlink subsys (disabled)
+[    0.103947] thermal_sys: Registered thermal governor 'step_wise'
+[    0.104758] audit: type=2000 audit(0.092:1): state=initialized audit_enabled=0 res=1
+[    0.105397] cpuidle: using governor menu
+[    0.128178] cpu0: Ratio of byte access time to unaligned word access is 1.64, unaligned accesses are fast
+[    0.147043] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.147118] HugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.151601] ACPI: Interpreter disabled.
+[    0.152095] iommu: Default domain type: Translated
+[    0.152149] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.154441] SCSI subsystem initialized
+[    0.156273] usbcore: registered new interface driver usbfs
+[    0.156544] usbcore: registered new interface driver hub
+[    0.156747] usbcore: registered new device driver usb
+[    0.158493] Advanced Linux Sound Architecture Driver Initialized.
+[    0.171023] vgaarb: loaded
+[    0.174118] clocksource: Switched to clocksource riscv_clocksource
+[    0.176638] pnp: PnP ACPI: disabled
+[    0.199089] NET: Registered PF_INET protocol family
+[    0.200034] IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    0.205097] tcp_listen_portaddr_hash hash table entries: 128 (order: 0, 4096 bytes, linear)
+[    0.205283] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.205370] TCP established hash table entries: 1024 (order: 1, 8192 bytes, linear)
+[    0.205534] TCP bind hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.205757] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.206933] UDP hash table entries: 256 (order: 2, 24576 bytes, linear)
+[    0.207230] UDP-Lite hash table entries: 256 (order: 2, 24576 bytes, linear)
+[    0.208389] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.211480] RPC: Registered named UNIX socket transport module.
+[    0.211564] RPC: Registered udp transport module.
+[    0.211595] RPC: Registered tcp transport module.
+[    0.211621] RPC: Registered tcp-with-tls transport module.
+[    0.211647] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.211817] PCI: CLS 0 bytes, default 64
+[    0.218483] Unpacking initramfs...
+[    0.225719] workingset: timestamp_bits=46 max_order=15 bucket_order=0
+[    0.229643] NFS: Registering the id_resolver key type
+[    0.230597] Key type id_resolver registered
+[    0.230652] Key type id_legacy registered
+[    0.230988] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.231097] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.237553] 9p: Installing v9fs 9p2000 file system support
+[    0.239258] NET: Registered PF_ALG protocol family
+[    0.239599] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 245)
+[    0.239759] io scheduler mq-deadline registered
+[    0.239851] io scheduler kyber registered
+[    0.239979] io scheduler bfq registered
+[    0.249424] riscv-plic c000000.plic: mapped 95 interrupts with 1 handlers for 2 contexts.
+[    0.252872] pci-host-generic 30000000.pci: host bridge /soc/pci@30000000 ranges:
+[    0.253619] pci-host-generic 30000000.pci:       IO 0x0003000000..0x000300ffff -> 0x0000000000
+[    0.254075] pci-host-generic 30000000.pci:      MEM 0x0040000000..0x007fffffff -> 0x0040000000
+[    0.254196] pci-host-generic 30000000.pci:      MEM 0x0400000000..0x07ffffffff -> 0x0400000000
+[    0.254780] pci-host-generic 30000000.pci: Memory resource size exceeds max for 32 bits
+[    0.255561] pci-host-generic 30000000.pci: ECAM at [mem 0x30000000-0x3fffffff] for [bus 00-ff]
+[    0.256996] pci-host-generic 30000000.pci: PCI host bridge to bus 0000:00
+[    0.257373] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.257483] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.257545] pci_bus 0000:00: root bus resource [mem 0x40000000-0x7fffffff]
+[    0.257575] pci_bus 0000:00: root bus resource [mem 0x400000000-0x7ffffffff]
+[    0.258943] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000 conventional PCI endpoint
+[    0.285045] SBI CPPC extension NOT detected!!
+[    0.465401] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.489612] 10000000.serial: ttyS0 at MMIO 0x10000000 (irq = 12, base_baud = 230400) is a 16550A
+[    0.491163] printk: legacy console [ttyS0] enabled
+[    0.818185] SuperH (H)SCI(F) driver initialized
+[    0.855503] loop: module loaded
+[    0.863589] e1000e: Intel(R) PRO/1000 Network Driver
+[    0.864597] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    0.876892] Freeing initrd memory: 6312K
+[    0.878233] usbcore: registered new interface driver uas
+[    0.879342] usbcore: registered new interface driver usb-storage
+[    0.881699] mousedev: PS/2 mouse device common for all mice
+[    0.886466] goldfish_rtc 101000.rtc: registered as rtc0
+[    0.888100] goldfish_rtc 101000.rtc: setting system clock to 2024-07-16T16:27:47 UTC (1721147267)
+[    0.896267] sdhci: Secure Digital Host Controller Interface driver
+[    0.897680] sdhci: Copyright(c) Pierre Ossman
+[    0.898770] Synopsys Designware Multimedia Card Interface Driver
+[    0.900310] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.902402] usbcore: registered new interface driver usbhid
+[    0.904126] usbhid: USB HID core driver
+[    0.905978] riscv-pmu-sbi: SBI PMU extension is available
+[    0.908066] riscv-pmu-sbi: 16 firmware and 18 hardware counters
+[    0.909573] riscv-pmu-sbi: Perf sampling/filtering is not supported as sscof extension is not available
+[    0.919745] NET: Registered PF_INET6 protocol family
+[    0.928439] Segment Routing with IPv6
+[    0.929568] In-situ OAM (IOAM) with IPv6
+[    0.930868] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    0.936251] NET: Registered PF_PACKET protocol family
+[    0.939679] 9pnet: Installing 9P2000 support
+[    0.941372] Key type dns_resolver registered
+[    0.982655] debug_vm_pgtable: [debug_vm_pgtable         ]: Validating architecture page table helpers
+[    0.994054] clk: Disabling unused clocks
+[    0.995240] PM: genpd: Disabling unused power domains
+[    0.996201] ALSA device list:
+[    0.996738]   No soundcards found.
+[    1.045087] Freeing unused kernel image (initmem) memory: 2252K
+[    1.047096] Run /bin/sh as init process
+/bin/sh: can't access tty; job control turned off
+~ # ls
+[1;34mbin[m      [1;34metc[m      [1;34mlib[m      [1;34mlib64[m    [1;34mproc[m     [1;34msbin[m     [1;34mtmp[m      [1;34musr[m
+[1;34mdev[m      [1;34mhome[m     [1;34mlib32[m    [1;36mlinuxrc[m  [1;34mroot[m     [1;34msys[m      [0;0mtmp.txt[m  [1;34mvar[m
+~ # ls b~ # ls bin/[J
+[1;36march[m           [1;36mdumpkmap[m       [1;36mkill[m           [1;36mnetstat[m        [1;36msetpriv[m
+[1;36mash[m            [1;36mecho[m           [1;36mlink[m           [1;36mnice[m           [1;36msetserial[m
+[1;36mbase32[m         [1;36med[m             [1;36mlinux32[m        [1;36mpidof[m          [1;36msh[m
+[1;36mbase64[m         [1;36megrep[m          [1;36mlinux64[m        [1;36mping[m           [1;36msleep[m
+[1;32mbusybox[m        [1;36mfalse[m          [1;36mln[m             [1;36mping6[m          [1;36mstat[m
+[1;36mcat[m            [1;36mfatattr[m        [1;36mlogin[m          [1;36mpipe_progress[m  [1;36mstty[m
+[1;36mchattr[m         [1;36mfdflush[m        [1;36mls[m             [1;36mprintenv[m       [1;36msu[m
+[1;36mchgrp[m          [1;36mfgrep[m          [1;36mlsattr[m         [1;36mps[m             [1;36msync[m
+[1;36mchmod[m          [1;36mfsync[m          [1;36mlzop[m           [1;36mpwd[m            [1;36mtar[m
+[1;36mchown[m          [1;36mgetopt[m         [1;36mmakemime[m       [1;36mreformime[m      [1;36mtouch[m
+[1;36mconspy[m         [1;36mgrep[m           [1;36mmkdir[m          [1;36mresume[m         [1;36mtrue[m
+[1;36mcp[m             [1;36mgunzip[m         [1;36mmknod[m          [1;36mrev[m            [1;36mumount[m
+[1;36mcpio[m           [1;36mgzip[m           [1;36mmktemp[m         [1;36mrm[m             [1;36muname[m
+[1;36mcttyhack[m       [1;36mhostname[m       [1;36mmore[m           [1;36mrmdir[m          [1;36musleep[m
+[1;36mdate[m           [1;36mhush[m           [1;36mmount[m          [1;36mrpm[m            [1;36mvi[m
+[1;36mdd[m             [1;36mionice[m         [1;36mmountpoint[m     [1;36mrun-parts[m      [1;36mwatch[m
+[1;36mdf[m             [1;36miostat[m         [1;36mmpstat[m         [1;36mscriptreplay[m   [1;36mzcat[m
+[1;36mdmesg[m          [1;36mipcalc[m         [1;36mmt[m             [1;36msed[m
+[1;36mdnsdomainname[m  [1;36mkbd_mode[m       [1;36mmv[m             [1;36msetarch[m
+~ # ~ # ls bin/[Js bin/[J[5D bin/[J[5Dl bin/[5Dl bin/[5D  bin/[5D bin/
+/bin/sh: ll: not found
+~ # ~ # ll  bin/[J bin/
+/bin/sh: ll: not found
+~ # ~ # ll  bin/[J  bin/[J[6D  bin/[J[6Dl  bin/[6Dl  bin/[6D  bin/
+/bin/sh: ll: not found
+~ # ~ # ll  bin/[J[J[J[J[J[J[J[J[Jls -l b~ # ls -l bin/[J
+total 952
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36march[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mash[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mbase32[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mbase64[m -> [1;32mbusybox[m
+-rwxr-xr-x    1 0        0           973208 Jul 16 16:23 [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mcat[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mchattr[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mchgrp[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mchmod[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mchown[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mconspy[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mcp[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mcpio[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mcttyhack[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mdate[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mdd[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mdf[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mdmesg[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mdnsdomainname[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mdumpkmap[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mecho[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36med[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36megrep[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mfalse[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mfatattr[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mfdflush[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mfgrep[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mfsync[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mgetopt[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mgrep[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mgunzip[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mgzip[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mhostname[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mhush[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mionice[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36miostat[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mipcalc[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mkbd_mode[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mkill[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mlink[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mlinux32[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mlinux64[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mln[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mlogin[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mls[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mlsattr[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mlzop[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmakemime[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmkdir[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmknod[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmktemp[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmore[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmount[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmountpoint[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmpstat[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmt[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mmv[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mnetstat[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mnice[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mpidof[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mping[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mping6[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mpipe_progress[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mprintenv[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mps[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mpwd[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mreformime[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mresume[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mrev[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mrm[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mrmdir[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mrpm[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mrun-parts[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mscriptreplay[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msed[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msetarch[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msetpriv[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msetserial[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msh[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msleep[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mstat[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mstty[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msu[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36msync[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mtar[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mtouch[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mtrue[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mumount[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36muname[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36musleep[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mvi[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mwatch[m -> [1;32mbusybox[m
+lrwxrwxrwx    1 0        0                7 Jul 16 16:23 [1;36mzcat[m -> [1;32mbusybox[m
+~ # q[Jq
+/bin/sh: q: not found
+~ # 
+[  121.320587] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00007f00
+[  121.322923] CPU: 0 PID: 1 Comm: sh Not tainted 6.10.0-rc6-00232-g5a4bd506ddad #1
+[  121.324726] Hardware name: riscv-virtio,qemu (DT)
+[  121.326135] Call Trace:
+[  121.326928] [<ffffffff800060ee>] dump_backtrace+0x1c/0x24
+[  121.329128] [<ffffffff80988c58>] show_stack+0x2c/0x38
+[  121.330801] [<ffffffff8099582c>] dump_stack_lvl+0x52/0x74
+[  121.332191] [<ffffffff80995862>] dump_stack+0x14/0x1c
+[  121.333479] [<ffffffff8098918a>] panic+0x106/0x2ba
+[  121.334497] [<ffffffff80018330>] do_exit+0x76c/0x772
+[  121.336119] [<ffffffff80018496>] do_group_exit+0x24/0x70
+[  121.337720] [<ffffffff800184fe>] pid_child_should_wake+0x0/0x56
+[  121.340236] [<ffffffff80996318>] do_trap_ecall_u+0x148/0x1d2
+[  121.341987] [<ffffffff8099f8a8>] ret_from_exception+0x0/0x64
+[  121.344281] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00007f00 ]---
